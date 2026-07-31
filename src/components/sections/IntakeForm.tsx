@@ -45,6 +45,12 @@ export function IntakeForm({
     panelRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [step]);
 
+  useEffect(() => {
+    if (status === "success") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [status]);
+
   function toggleSituation(id: SituationId) {
     setHint(null);
     setSituations((prev) =>
@@ -100,7 +106,7 @@ export function IntakeForm({
   if (status === "success") {
     return (
       <Container className="py-14 md:py-20">
-        <div className="mx-auto max-w-xl rounded-3xl border border-line bg-pearl p-8 text-center shadow-[0_20px_50px_-30px_rgba(22,40,31,0.25)]">
+        <div className="mx-auto max-w-xl scroll-mt-28 rounded-3xl border border-line bg-pearl p-8 text-center shadow-[0_20px_50px_-30px_rgba(22,40,31,0.25)]">
           <SectionLabel>{dict.intake.eyebrow}</SectionLabel>
           <h1 className="text-2xl font-semibold text-ink md:text-3xl">
             {dict.intake.successTitle}

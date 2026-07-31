@@ -95,13 +95,14 @@ export function Header({
         <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
           <Link
             href={localePath(otherLocale, rest)}
-            className="inline-flex h-10 min-w-10 items-center justify-center rounded-full border border-line px-2.5 text-xs font-medium text-ink-muted transition-colors hover:border-trust hover:text-trust"
+            className="inline-flex h-10 items-center justify-center rounded-full border border-line px-3 text-xs font-medium tracking-wide text-ink-muted transition-colors hover:border-trust hover:text-trust"
             hrefLang={otherLocale}
             aria-label={
               locale === "ja" ? "Switch to English" : "日本語に切り替え"
             }
+            title={locale === "ja" ? "English" : "日本語"}
           >
-            {otherLocale.toUpperCase()}
+            {otherLocale === "en" ? "EN" : "日本語"}
           </Link>
           {!onIntake && (
             <ButtonLink
