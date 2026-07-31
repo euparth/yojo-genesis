@@ -244,7 +244,12 @@ export function IntakeForm({
           {step === 1 && (
             <div>
               <label className="block text-sm font-medium text-ink">
-                {dict.intake.briefLabel}
+                <span className="flex flex-wrap items-baseline justify-between gap-2">
+                  <span>{dict.intake.briefLabel}</span>
+                  <span className="text-xs font-normal text-ink-muted">
+                    {dict.intake.briefHint}
+                  </span>
+                </span>
                 <textarea
                   value={brief}
                   onChange={(e) => {
@@ -252,16 +257,18 @@ export function IntakeForm({
                     setHint(null);
                   }}
                   rows={7}
+                  minLength={20}
                   placeholder={dict.intake.briefPlaceholder}
-                  className="mt-2 w-full rounded-xl border border-line bg-pearl/40 px-4 py-3 text-sm leading-relaxed text-ink outline-none transition-colors focus:border-trust focus:bg-bg"
+                  className="mt-2 w-full rounded-xl border border-line bg-pearl/40 px-4 py-3 text-sm leading-relaxed text-ink outline-none transition-colors placeholder:text-ink-muted/70 focus:border-trust focus:bg-bg"
                 />
               </label>
               <p
                 className={`mt-1.5 text-xs ${
                   briefLen >= 20 ? "text-trust" : "text-ink-muted"
                 }`}
+                aria-live="polite"
               >
-                {briefLen}/20+
+                {dict.intake.briefCounter.replace("{n}", String(briefLen))}
               </p>
               <label className="mt-4 block text-sm font-medium text-ink">
                 {dict.intake.fileLabel}

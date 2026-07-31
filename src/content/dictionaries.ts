@@ -200,7 +200,8 @@ const ja = {
     ],
     briefLabel: "課題の概要",
     briefPlaceholder:
-      "例：第4ラインの外観検査をクラウド接続なしで自動化したい。現状は二人体制の目視で、ピーク時に遅延が発生している…",
+      "最低20文字以上でご記入ください。例：第4ラインの外観検査をクラウド接続なしで自動化したい。現状は二人体制の目視で、ピーク時に遅延が発生している…",
+    briefCounter: "{n} / 最低20文字",
     fileLabel: "補足資料（任意・PDF/画像）",
     fileHint: "機密情報はマスキングしたうえで添付してください。",
     nameLabel: "お名前",
@@ -437,7 +438,8 @@ const en = {
     ],
     briefLabel: "Problem brief",
     briefPlaceholder:
-      "Example: Automate visual inspection on Line 4 without cloud connectivity. Two inspectors today; delays at peak…",
+      "Minimum 20 characters. Example: Automate visual inspection on Line 4 without cloud connectivity. Two inspectors today; delays at peak…",
+    briefCounter: "{n} / minimum 20 characters",
     fileLabel: "Supporting file (optional PDF/image)",
     fileHint: "Please redact confidential details before uploading.",
     nameLabel: "Your name",
