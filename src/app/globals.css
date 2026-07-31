@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+:root {
+  /* Washi paper & sumi ink — nature-inspired Japanese palette */
+  --bg: #faf8f2;
+  --bg-pearl: #f3efe4;
+  --trust: #3f6b52; /* moss green */
+  --trust-deep: #2a4d3a; /* pine */
+  --ink: #23312a; /* sumi ink with green cast */
+  --ink-muted: #5f6f64;
+  --line: #e2dccb;
+  --forest: #16281f;
+  --forest-soft: #1f3a2c;
+  --surface-dark: #12211a;
+  --accent-soft: #e6ecdd; /* matcha wash */
+  --gold: #b28d4f; /* dried grass / kin */
+  --sakura: #c98f86;
+  --white: #ffffff;
+  --danger: #9b2c2c;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-pearl: var(--bg-pearl);
+  --color-trust: var(--trust);
+  --color-trust-deep: var(--trust-deep);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-forest: var(--forest);
+  --color-forest-soft: var(--forest-soft);
+  --color-surface-dark: var(--surface-dark);
+  --color-accent-soft: var(--accent-soft);
+  --color-gold: var(--gold);
+  --color-sakura: var(--sakura);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-noto-sans-jp);
+  --font-serif: var(--font-shippori);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-noto-sans-jp), "Hiragino Sans", "Noto Sans JP",
+    sans-serif;
+  line-height: 1.8;
+  font-size: 16px;
+  /* subtle washi grain */
+  background-image: radial-gradient(
+      circle at 20% 10%,
+      rgba(63, 107, 82, 0.035), 
+      transparent 40%
+    ),
+    radial-gradient(circle at 85% 30%, rgba(178, 141, 79, 0.04), transparent 45%);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-shippori), "Hiragino Mincho ProN", serif;
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--trust) 25%, var(--bg));
+  color: var(--ink);
+}
+
+.section-pad {
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-pad {
+    padding-inline: 3rem;
+  }
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* growing line inside a revealed block */
+.grow-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.reveal-visible .grow-line {
+  transform: scaleX(1);
+}
+
+/* ---------- Ensō brush circle ---------- */
+.enso-draw {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: enso 2.6s cubic-bezier(0.45, 0, 0.2, 1) 0.3s forwards;
+}
+
+@keyframes enso {
+  to {
+    stroke-dashoffset: 26;
+  }
+}
+
+/* ---------- Floating / breathing ---------- */
+.float-slow {
+  animation: floaty 9s ease-in-out infinite;
+}
+
+.float-slower {
+  animation: floaty 13s ease-in-out infinite reverse;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(2deg);
+  }
+}
+
+.breathe {
+  animation: breathe 8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.06);
+  }
+}
+
+/* ---------- Marquee ---------- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Pulse dot (live status) ---------- */
+.pulse-dot {
+  position: relative;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: currentColor;
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  80%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* ---------- Card hover ---------- */
+.card-lift {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px -18px rgba(22, 40, 31, 0.28);
+}
+
+/* ---------- Kanji watermark ---------- */
+.kanji-mark {
+  font-family: var(--font-shippori), serif;
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* ---------- Seigaiha wave divider ---------- */
+.seigaiha {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg fill='none' stroke='%233f6b52' stroke-opacity='0.16' stroke-width='1.4'%3E%3Ccircle cx='20' cy='40' r='18'/%3E%3Ccircle cx='20' cy='40' r='12'/%3E%3Ccircle cx='20' cy='40' r='6'/%3E%3Ccircle cx='60' cy='40' r='18'/%3E%3Ccircle cx='60' cy='40' r='12'/%3E%3Ccircle cx='60' cy='40' r='6'/%3E%3Ccircle cx='40' cy='52' r='18'/%3E%3Ccircle cx='40' cy='52' r='12'/%3E%3Ccircle cx='0' cy='52' r='18'/%3E%3Ccircle cx='0' cy='52' r='12'/%3E%3Ccircle cx='80' cy='52' r='18'/%3E%3Ccircle cx='80' cy='52' r='12'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 80px 40px;
+}
+
+.seigaiha-dark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg fill='none' stroke='%23b28d4f' stroke-opacity='0.22' stroke-width='1.4'%3E%3Ccircle cx='20' cy='40' r='18'/%3E%3Ccircle cx='20' cy='40' r='12'/%3E%3Ccircle cx='20' cy='40' r='6'/%3E%3Ccircle cx='60' cy='40' r='18'/%3E%3Ccircle cx='60' cy='40' r='12'/%3E%3Ccircle cx='60' cy='40' r='6'/%3E%3Ccircle cx='40' cy='52' r='18'/%3E%3Ccircle cx='40' cy='52' r='12'/%3E%3Ccircle cx='0' cy='52' r='18'/%3E%3Ccircle cx='0' cy='52' r='12'/%3E%3Ccircle cx='80' cy='52' r='18'/%3E%3Ccircle cx='80' cy='52' r='12'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 80px 40px;
+}
+
+/* ---------- Vertical Japanese text ---------- */
+.tategaki {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.35em;
+}
+
+/* ---------- Link underline sweep ---------- */
+.link-sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s ease;
+}
+
+.link-sweep:hover {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .grow-line {
+    transform: scaleX(1);
+    transition: none;
+  }
+  .enso-draw,
+  .float-slow,
+  .float-slower,
+  .breathe,
+  .marquee-track,
+  .pulse-dot::after {
+    animation: none;
+  }
+  .enso-draw {
+    stroke-dashoffset: 26;
+  }
+}
