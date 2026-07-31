@@ -39,3 +39,26 @@ Without Resend configured, submissions are still stored in `data/intake-submissi
 - Portfolio: `src/content/portfolio.ts`
 
 Replace the provisional Tokyo address in `company.ts` when you have a real office.
+
+
+## Deploy (production)
+
+Production: https://yojo-genesis.vercel.app
+
+After merging to `main`, deploy with a Vercel token:
+
+```bash
+export VERCEL_TOKEN=...   # https://vercel.com/account/tokens
+# optional but recommended:
+export VERCEL_ORG_ID=...
+export VERCEL_PROJECT_ID=...
+npm run deploy:prod
+```
+
+Or after `vercel login` once in the environment:
+
+```bash
+npx vercel deploy --prod --yes
+```
+
+Add `VERCEL_TOKEN` (and org/project ids) to the Cursor Cloud Agent environment secrets so future agents can merge **and** ship without waiting.
