@@ -29,19 +29,19 @@ export function Header({
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line/70 bg-bg/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-line/70 bg-bg/95 supports-[backdrop-filter]:bg-bg/85 supports-[backdrop-filter]:backdrop-blur-md">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-trust focus:px-4 focus:py-2 focus:text-sm focus:text-white"
       >
         Skip to content
       </a>
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 section-pad py-3">
+      <div className="mx-auto flex max-w-6xl min-w-0 items-center justify-between gap-2 section-pad py-3 sm:gap-4">
         <Link
           href={localePath(locale)}
-          className="group flex items-center gap-2.5"
+          className="group flex min-w-0 items-center gap-2 sm:gap-2.5"
         >
-          <span className="relative flex h-9 w-9 items-center justify-center">
+          <span className="relative flex h-9 w-9 shrink-0 items-center justify-center">
             <Enso
               className="absolute inset-0 h-full w-full text-trust transition-transform duration-700 group-hover:rotate-[360deg]"
               strokeWidth={9}
@@ -51,7 +51,7 @@ export function Header({
               養
             </span>
           </span>
-          <span className="font-serif text-[15px] font-semibold tracking-tight text-ink">
+          <span className="truncate font-serif text-sm font-semibold tracking-tight text-ink sm:text-[15px]">
             YOJO Genesis
           </span>
         </Link>

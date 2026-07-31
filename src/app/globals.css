@@ -40,19 +40,23 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-noto-sans-jp), "Hiragino Sans", "Noto Sans JP",
-    sans-serif;
+    "Hiragino Kaku Gothic ProN", sans-serif;
   line-height: 1.8;
   font-size: 16px;
+  overflow-x: clip;
+  min-width: 0;
   /* subtle washi grain */
   background-image: radial-gradient(
       circle at 20% 10%,
-      rgba(63, 107, 82, 0.035), 
+      rgba(63, 107, 82, 0.035),
       transparent 40%
     ),
     radial-gradient(circle at 85% 30%, rgba(178, 141, 79, 0.04), transparent 45%);
@@ -61,8 +65,11 @@ body {
 h1,
 h2,
 h3 {
-  font-family: var(--font-shippori), "Hiragino Mincho ProN", serif;
+  font-family: var(--font-shippori), "Hiragino Mincho ProN", "Yu Mincho",
+    serif;
   letter-spacing: 0.01em;
+  /* Prevent CJK from collapsing if webfont lags */
+  font-synthesis: none;
 }
 
 ::selection {
@@ -87,18 +94,27 @@ h3 {
 }
 
 /* ---------- Scroll reveal ---------- */
+/* CRITICAL: default VISIBLE. Opacity-0 defaults blank iPhone Safari when IO fails. */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal.reveal-enhance:not(.reveal-visible) {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(18px);
   transition:
-    opacity 0.9s ease,
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
-.reveal-visible {
+.reveal.reveal-visible {
   opacity: 1;
   transform: none;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* growing line inside a revealed block */
@@ -108,7 +124,8 @@ h3 {
   transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
 }
 
-.reveal-visible .grow-line {
+.reveal-visible .grow-line,
+.reveal:not(.reveal-enhance) .grow-line {
   transform: scaleX(1);
 }
 
@@ -264,7 +281,9 @@ h3 {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
+  .reveal,
+  .reveal.reveal-enhance:not(.reveal-visible),
+  .reveal.reveal-visible {
     opacity: 1;
     transform: none;
     transition: none;

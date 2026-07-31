@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_JP, Shippori_Mincho } from "next/font/google";
 import "./globals.css";
 
@@ -7,6 +7,7 @@ const notoSansJp = Noto_Sans_JP({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
+  preload: true,
 });
 
 const shipporiMincho = Shippori_Mincho({
@@ -14,12 +15,21 @@ const shipporiMincho = Shippori_Mincho({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
   title: "YOJO Genesis",
   description:
     "AI-native enterprise modernization for the Japanese B2B market.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#faf8f2",
 };
 
 export default function RootLayout({

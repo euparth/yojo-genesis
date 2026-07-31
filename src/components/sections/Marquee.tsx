@@ -31,7 +31,7 @@ export function Marquee() {
 
   return (
     <div
-      className="overflow-hidden border-b border-line bg-pearl/60 py-4"
+      className="relative overflow-x-hidden overflow-y-hidden border-b border-line bg-pearl/60 py-4"
       aria-hidden
     >
       <div className="marquee-track">

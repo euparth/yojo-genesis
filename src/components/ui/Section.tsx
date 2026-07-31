@@ -14,7 +14,7 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={`mx-auto w-full max-w-6xl section-pad ${className}`}>
+    <div className={`mx-auto w-full min-w-0 max-w-6xl section-pad ${className}`}>
       {children}
     </div>
   );
