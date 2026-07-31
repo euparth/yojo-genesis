@@ -12,6 +12,7 @@ const ja = {
     security: "セキュリティ",
     company: "会社概要",
     intake: "72時間診断",
+    intakeShort: "72h診断",
     services: "サービス",
   },
   hero: {
@@ -211,6 +212,9 @@ const ja = {
     back: "戻る",
     submit: "送信する",
     submitting: "送信中…",
+    selectHint: "先に当てはまる状況を1つ以上選んでください。",
+    briefHint: "課題の概要を20文字以上ご記入ください。",
+    contactHint: "お名前・会社名・有効なメールアドレスをご入力ください。",
     guarantee:
       "送信後72時間以内に、実現可能性マトリクスと次ステップのご案内をお送りします。",
     secureNote: "送信内容は診断対応のみに使用し、公開モデルの学習には用いません。",
@@ -245,6 +249,7 @@ const en = {
     security: "Security",
     company: "Company",
     intake: "72h assessment",
+    intakeShort: "72h assess",
     services: "Services",
   },
   hero: {
@@ -444,6 +449,9 @@ const en = {
     back: "Back",
     submit: "Send it over",
     submitting: "Sending…",
+    selectHint: "Select at least one situation to continue.",
+    briefHint: "Please write at least 20 characters in the brief.",
+    contactHint: "Enter your name, company, and a valid email to submit.",
     guarantee:
       "Within 72 hours we’ll send feasibility matrix direction and suggested next steps.",
     secureNote:

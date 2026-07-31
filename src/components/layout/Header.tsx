@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useId, useState } from "react";
 import type { Dictionary } from "@/content/dictionaries";
 import type { Locale } from "@/lib/types";
 import { localePath } from "@/lib/i18n";
@@ -20,6 +20,8 @@ export function Header({
   const pathname = usePathname();
   const rest = pathname.replace(/^\/(ja|en)/, "") || "/";
   const otherLocale: Locale = locale === "ja" ? "en" : "ja";
+  const menuId = useId();
+  const onIntake = rest === "/intake" || rest.startsWith("/intake/");
 
   const links = [
     { href: localePath(locale, "/#capabilities"), label: dict.nav.capabilities },
@@ -27,6 +29,24 @@ export function Header({
     { href: localePath(locale, "/#security"), label: dict.nav.security },
     { href: localePath(locale, "/company"), label: dict.nav.company },
   ];
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/70 bg-bg/95 supports-[backdrop-filter]:bg-bg/85 supports-[backdrop-filter]:backdrop-blur-md">
@@ -36,10 +56,11 @@ export function Header({
       >
         Skip to content
       </a>
-      <div className="mx-auto flex max-w-6xl min-w-0 items-center justify-between gap-2 section-pad py-3 sm:gap-4">
+      <div className="mx-auto flex max-w-6xl min-w-0 items-center gap-2 section-pad py-2.5 sm:gap-3 sm:py-3">
         <Link
           href={localePath(locale)}
-          className="group flex min-w-0 items-center gap-2 sm:gap-2.5"
+          className="group flex min-w-0 shrink items-center gap-2"
+          aria-label="YOJO Genesis"
         >
           <span className="relative flex h-9 w-9 shrink-0 items-center justify-center">
             <Enso
@@ -51,12 +72,15 @@ export function Header({
               養
             </span>
           </span>
-          <span className="truncate font-serif text-sm font-semibold tracking-tight text-ink sm:text-[15px]">
+          <span className="whitespace-nowrap font-serif text-[13px] font-semibold tracking-tight text-ink sm:text-[15px]">
             YOJO Genesis
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 text-sm text-ink-muted lg:flex">
+        <nav
+          className="ml-6 hidden items-center gap-7 text-sm text-ink-muted lg:flex"
+          aria-label="Primary"
+        >
           {links.map((link) => (
             <Link
               key={link.href}
@@ -68,59 +92,83 @@ export function Header({
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
           <Link
             href={localePath(otherLocale, rest)}
-            className="rounded-full border border-line px-3 py-1.5 text-xs font-medium text-ink-muted transition-colors hover:border-trust hover:text-trust"
+            className="inline-flex h-10 min-w-10 items-center justify-center rounded-full border border-line px-2.5 text-xs font-medium text-ink-muted transition-colors hover:border-trust hover:text-trust"
             hrefLang={otherLocale}
+            aria-label={
+              locale === "ja" ? "Switch to English" : "日本語に切り替え"
+            }
           >
             {otherLocale.toUpperCase()}
           </Link>
-          <ButtonLink
-            href={localePath(locale, "/intake")}
-            className="hidden sm:inline-flex text-xs sm:text-sm"
-          >
-            {dict.nav.intake}
-          </ButtonLink>
+          {!onIntake && (
+            <ButtonLink
+              href={localePath(locale, "/intake")}
+              className="!px-3.5 !py-2 text-xs sm:!px-5 sm:!py-2.5 sm:text-sm"
+            >
+              <span className="sm:hidden">{dict.nav.intakeShort}</span>
+              <span className="hidden sm:inline">{dict.nav.intake}</span>
+            </ButtonLink>
+          )}
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line lg:hidden"
-            aria-label="Menu"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line transition-colors hover:border-trust lg:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls={menuId}
             onClick={() => setOpen((v) => !v)}
           >
-            <span className="sr-only">Menu</span>
-            <div className="space-y-1.5">
+            <span className="relative block h-3.5 w-4" aria-hidden>
               <span
-                className={`block h-0.5 w-4 bg-ink transition-transform duration-300 ${
-                  open ? "translate-y-1 rotate-45" : ""
+                className={`absolute left-0 top-0 block h-0.5 w-4 bg-ink transition-transform duration-300 ${
+                  open ? "translate-y-[6px] rotate-45" : ""
                 }`}
               />
               <span
-                className={`block h-0.5 w-4 bg-ink transition-transform duration-300 ${
-                  open ? "-translate-y-1 -rotate-45" : ""
+                className={`absolute left-0 top-[6px] block h-0.5 w-4 bg-ink transition-opacity duration-200 ${
+                  open ? "opacity-0" : "opacity-100"
                 }`}
               />
-            </div>
+              <span
+                className={`absolute left-0 top-[12px] block h-0.5 w-4 bg-ink transition-transform duration-300 ${
+                  open ? "-translate-y-[6px] -rotate-45" : ""
+                }`}
+              />
+            </span>
           </button>
         </div>
       </div>
 
       {open && (
-        <div className="border-t border-line bg-bg lg:hidden">
-          <nav className="mx-auto flex max-w-6xl flex-col gap-3 section-pad py-4 text-sm">
+        <div
+          id={menuId}
+          className="border-t border-line bg-bg lg:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+        >
+          <nav className="mx-auto flex max-w-6xl flex-col gap-1 section-pad py-3 text-base">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-ink"
+                className="rounded-xl px-3 py-3 text-ink transition-colors hover:bg-pearl active:bg-accent-soft"
               >
                 {link.label}
               </Link>
             ))}
-            <ButtonLink href={localePath(locale, "/intake")}>
-              {dict.nav.intake}
-            </ButtonLink>
+            <div className="pt-2">
+              <ButtonLink
+                href={localePath(locale, "/intake")}
+                className="w-full"
+                onClick={() => setOpen(false)}
+              >
+                {dict.nav.intake}
+              </ButtonLink>
+            </div>
           </nav>
         </div>
       )}

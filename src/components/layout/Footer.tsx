@@ -35,28 +35,28 @@ export function Footer({
               {dict.footer.appi}
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4 text-sm">
+          <div className="grid grid-cols-2 gap-1 text-sm sm:gap-2">
             <Link
               href={localePath(locale, "/company")}
-              className="link-sweep text-ink-muted hover:text-trust"
+              className="link-sweep rounded-lg px-2 py-2.5 text-ink-muted hover:text-trust"
             >
               {dict.footer.company}
             </Link>
             <Link
               href={localePath(locale, "/intake")}
-              className="link-sweep text-ink-muted hover:text-trust"
+              className="link-sweep rounded-lg px-2 py-2.5 text-ink-muted hover:text-trust"
             >
               {dict.footer.intake}
             </Link>
             <Link
               href={localePath(locale, "/#security")}
-              className="link-sweep text-ink-muted hover:text-trust"
+              className="link-sweep rounded-lg px-2 py-2.5 text-ink-muted hover:text-trust"
             >
               {dict.footer.security}
             </Link>
             <Link
               href={localePath(locale, "/#cases")}
-              className="link-sweep text-ink-muted hover:text-trust"
+              className="link-sweep rounded-lg px-2 py-2.5 text-ink-muted hover:text-trust"
             >
               {dict.footer.cases}
             </Link>
@@ -64,7 +64,7 @@ export function Footer({
               href="https://devpilot.co.in/"
               target="_blank"
               rel="noopener noreferrer"
-              className="link-sweep text-ink-muted hover:text-trust"
+              className="link-sweep col-span-2 rounded-lg px-2 py-2.5 text-ink-muted hover:text-trust sm:col-span-1"
             >
               {dict.footer.delivery}: DevPilot
             </a>

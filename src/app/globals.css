@@ -62,6 +62,22 @@ body {
     radial-gradient(circle at 85% 30%, rgba(178, 141, 79, 0.04), transparent 45%);
 }
 
+/* Comfortable tap targets + remove iOS tap flash */
+a,
+button,
+[role="button"],
+summary {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px; /* prevent iOS zoom on focus */
+  max-width: 100%;
+}
+
 h1,
 h2,
 h3 {

@@ -66,7 +66,7 @@ export function Capabilities({ dict }: { dict: Dictionary }) {
                     </p>
                     <button
                       type="button"
-                      className="link-sweep mt-6 text-sm font-medium text-trust"
+                      className="link-sweep mt-6 inline-flex min-h-10 items-center text-sm font-medium text-trust"
                       onClick={() => setOpen(isOpen ? null : id)}
                       aria-expanded={isOpen}
                     >
