@@ -48,15 +48,15 @@ export default async function CompanyPage({
         <h2 className="text-lg font-semibold text-ink">
           {dict.companyPage.factsTitle}
         </h2>
-        <div className="mt-4 overflow-hidden rounded-2xl border border-line bg-bg">
-          <table className="w-full text-left text-sm">
+        <div className="mt-4 overflow-x-auto rounded-2xl border border-line bg-bg">
+          <table className="w-full min-w-[18rem] text-left text-sm">
             <tbody>
               {companyFacts.map((fact) => (
                 <tr key={fact.label.ja} className="border-b border-line last:border-0">
-                  <th className="w-[36%] bg-pearl px-4 py-3 align-top font-medium text-ink md:px-5">
+                  <th className="w-[34%] bg-pearl px-3 py-3 align-top font-medium text-ink sm:px-4 md:w-[36%] md:px-5">
                     {fact.label[locale]}
                   </th>
-                  <td className="px-4 py-3 text-ink-muted md:px-5">
+                  <td className="px-3 py-3 text-ink-muted sm:px-4 md:px-5">
                     {fact.value[locale]}
                   </td>
                 </tr>

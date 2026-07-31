@@ -34,7 +34,11 @@ export function CtaBand({ locale, dict }: { locale: Locale; dict: Dictionary }) 
             </h2>
             <p className="mt-4 text-white/75">{dict.ctaBand.body}</p>
             <div className="mt-9">
-              <ButtonLink href={localePath(locale, "/intake")} variant="light">
+              <ButtonLink
+                href={localePath(locale, "/intake")}
+                variant="light"
+                className="w-full justify-center sm:w-auto"
+              >
                 {dict.ctaBand.button} →
               </ButtonLink>
             </div>

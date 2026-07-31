@@ -63,14 +63,14 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <div className="mt-8 flex w-full flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center">
             <ButtonLink
               href={localePath(locale, "/intake")}
-              className="w-full sm:w-auto"
+              className="w-full justify-center sm:w-auto"
             >
               {dict.hero.primaryCta} →
             </ButtonLink>
             <ButtonLink
               href={localePath(locale, "/#capabilities")}
               variant="secondary"
-              className="w-full sm:w-auto"
+              className="w-full justify-center sm:w-auto"
             >
               {dict.hero.secondaryCta}
             </ButtonLink>
