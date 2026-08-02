@@ -24,9 +24,10 @@ export function Header({
   const onIntake = rest === "/intake" || rest.startsWith("/intake/");
 
   const links = [
+    { href: localePath(locale, "/#how-it-works"), label: dict.nav.howItWorks },
+    { href: localePath(locale, "/#what-we-build"), label: dict.nav.whatWeBuild },
     { href: localePath(locale, "/#capabilities"), label: dict.nav.capabilities },
     { href: localePath(locale, "/#cases"), label: dict.nav.cases },
-    { href: localePath(locale, "/#security"), label: dict.nav.security },
     { href: localePath(locale, "/company"), label: dict.nav.company },
   ];
 

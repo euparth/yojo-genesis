@@ -7,6 +7,9 @@ export type CapabilityId =
   | "modernization";
 
 export type SituationId =
+  | "website-app"
+  | "ui-ux"
+  | "ai-daily"
   | "visual-inspection"
   | "legacy-data"
   | "onprem-llm"

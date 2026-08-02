@@ -68,7 +68,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {dict.hero.primaryCta} →
             </ButtonLink>
             <ButtonLink
-              href={localePath(locale, "/#capabilities")}
+              href={localePath(locale, "/#what-we-build")}
               variant="secondary"
               className="w-full justify-center sm:w-auto"
             >

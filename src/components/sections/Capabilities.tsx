@@ -61,6 +61,9 @@ export function Capabilities({ dict }: { dict: Dictionary }) {
                     <h3 className="mt-5 text-xl font-semibold text-ink">
                       {item.title}
                     </h3>
+                    <p className="mt-2 text-sm font-medium leading-relaxed text-trust">
+                      {item.plainSubtitle}
+                    </p>
                     <p className="mt-3 text-sm leading-relaxed text-ink-muted">
                       {item.body}
                     </p>

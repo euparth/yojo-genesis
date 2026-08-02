@@ -131,6 +131,9 @@ export function IntakeForm({
           <p className="mt-4 text-[15px] leading-relaxed text-ink-muted sm:text-base">
             {dict.intake.body}
           </p>
+          <p className="mt-4 rounded-2xl border border-trust/20 bg-accent-soft/50 px-4 py-3 text-sm leading-relaxed text-ink">
+            {dict.intake.plainPromise}
+          </p>
           <p className="mt-5 text-sm text-ink-muted">{dict.intake.guarantee}</p>
           <p className="mt-2 text-xs text-ink-muted">{dict.intake.secureNote}</p>
         </div>
