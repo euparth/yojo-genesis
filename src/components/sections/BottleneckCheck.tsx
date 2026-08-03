@@ -110,16 +110,15 @@ export function BottleneckCheck({
           email,
         }),
       });
-      if (!res.ok) throw new Error("fail");
+      // Unlock results even if storage/email fails — don't trap the visitor.
+      if (!res.ok) {
+        console.warn("check submit failed", await res.text());
+      }
       setPhase("result");
       setStatus("idle");
     } catch {
-      setStatus("error");
-      setHint(
-        locale === "ja"
-          ? "送信に失敗しました。もう一度お試しください。"
-          : "Something went wrong. Please try again.",
-      );
+      setPhase("result");
+      setStatus("idle");
     }
   }
 

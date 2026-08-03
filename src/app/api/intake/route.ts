@@ -1,6 +1,5 @@
-import { mkdir, appendFile, readFile, writeFile } from "fs/promises";
-import path from "path";
 import { NextResponse } from "next/server";
+import { appendJsonRecord, appendLogLine } from "@/lib/submissions";
 
 type IntakeBody = {
   locale?: string;
@@ -44,61 +43,65 @@ export async function POST(request: Request) {
       contact: body.contact ?? "",
     };
 
-    const dataDir = path.join(process.cwd(), "data");
-    await mkdir(dataDir, { recursive: true });
-    const filePath = path.join(dataDir, "intake-submissions.json");
-
-    let existing: unknown[] = [];
     try {
-      const raw = await readFile(filePath, "utf8");
-      existing = JSON.parse(raw) as unknown[];
-      if (!Array.isArray(existing)) existing = [];
-    } catch {
-      existing = [];
+      await appendJsonRecord("intake-submissions.json", record);
+    } catch (err) {
+      await appendLogLine(
+        "intake-store-errors.log",
+        `${new Date().toISOString()} ${String(err)}\n`,
+      );
     }
-    existing.push(record);
-    await writeFile(filePath, JSON.stringify(existing, null, 2), "utf8");
 
     const resendKey = process.env.RESEND_API_KEY;
     const toEmail = process.env.INTAKE_TO_EMAIL;
 
     if (resendKey && toEmail) {
-      const emailRes = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: "YOJO Genesis Intake <onboarding@resend.dev>",
-          to: [toEmail],
-          subject: `[YOJO Intake] ${company} — ${name}`,
-          text: [
-            `Company: ${company}`,
-            `Name: ${name}`,
-            `Email: ${email}`,
-            `Contact preference: ${record.contact}`,
-            `Locale: ${record.locale}`,
-            `Situations: ${record.situations.join(", ")}`,
-            `File: ${record.fileName ?? "none"}`,
-            "",
-            "Brief:",
-            brief,
-          ].join("\n"),
-        }),
-      });
+      try {
+        const emailRes = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${resendKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "YOJO Genesis Intake <onboarding@resend.dev>",
+            to: [toEmail],
+            subject: `[YOJO Intake] ${company} — ${name}`,
+            text: [
+              `Company: ${company}`,
+              `Name: ${name}`,
+              `Email: ${email}`,
+              `Contact preference: ${record.contact}`,
+              `Locale: ${record.locale}`,
+              `Situations: ${record.situations.join(", ")}`,
+              `File: ${record.fileName ?? "none"}`,
+              "",
+              "Brief:",
+              brief,
+            ].join("\n"),
+          }),
+        });
 
-      if (!emailRes.ok) {
-        const errText = await emailRes.text();
-        await appendFile(
-          path.join(dataDir, "intake-email-errors.log"),
-          `${new Date().toISOString()} ${errText}\n`,
+        if (!emailRes.ok) {
+          const errText = await emailRes.text();
+          await appendLogLine(
+            "intake-email-errors.log",
+            `${new Date().toISOString()} ${errText}\n`,
+          );
+        }
+      } catch (err) {
+        await appendLogLine(
+          "intake-email-errors.log",
+          `${new Date().toISOString()} ${String(err)}\n`,
         );
       }
     }
 
     return NextResponse.json({ ok: true, id: record.id });
-  } catch {
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+  } catch (err) {
+    return NextResponse.json(
+      { error: "Server error", detail: String(err) },
+      { status: 500 },
+    );
   }
 }

@@ -1,6 +1,5 @@
-import { mkdir, appendFile, readFile, writeFile } from "fs/promises";
-import path from "path";
 import { NextResponse } from "next/server";
+import { appendJsonRecord, appendLogLine } from "@/lib/submissions";
 
 type CheckBody = {
   locale?: string;
@@ -46,61 +45,66 @@ export async function POST(request: Request) {
       email,
     };
 
-    const dataDir = path.join(process.cwd(), "data");
-    await mkdir(dataDir, { recursive: true });
-    const filePath = path.join(dataDir, "check-submissions.json");
-
-    let existing: unknown[] = [];
     try {
-      const raw = await readFile(filePath, "utf8");
-      existing = JSON.parse(raw) as unknown[];
-      if (!Array.isArray(existing)) existing = [];
-    } catch {
-      existing = [];
+      await appendJsonRecord("check-submissions.json", record);
+    } catch (err) {
+      await appendLogLine(
+        "check-store-errors.log",
+        `${new Date().toISOString()} ${String(err)}\n`,
+      );
+      // Still succeed — unlock UX must not block on storage.
     }
-    existing.push(record);
-    await writeFile(filePath, JSON.stringify(existing, null, 2), "utf8");
 
     const resendKey = process.env.RESEND_API_KEY;
     const toEmail = process.env.INTAKE_TO_EMAIL;
 
     if (resendKey && toEmail) {
-      const emailRes = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: "YOJO Genesis Check <onboarding@resend.dev>",
-          to: [toEmail],
-          subject: `[YOJO Check ${checkPath.toUpperCase()}] ${company} — ${name}`,
-          text: [
-            `Path: ${checkPath}`,
-            `Score: ${record.score} (${record.band})`,
-            `Company: ${company}`,
-            `Name: ${name}`,
-            `Email: ${email}`,
-            `Locale: ${record.locale}`,
-            `Gaps: ${record.gapIds.join(", ")}`,
-            "",
-            "Answers:",
-            JSON.stringify(record.answers, null, 2),
-          ].join("\n"),
-        }),
-      });
+      try {
+        const emailRes = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${resendKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "YOJO Genesis Check <onboarding@resend.dev>",
+            to: [toEmail],
+            subject: `[YOJO Check ${checkPath.toUpperCase()}] ${company} — ${name}`,
+            text: [
+              `Path: ${checkPath}`,
+              `Score: ${record.score} (${record.band})`,
+              `Company: ${company}`,
+              `Name: ${name}`,
+              `Email: ${email}`,
+              `Locale: ${record.locale}`,
+              `Gaps: ${record.gapIds.join(", ")}`,
+              "",
+              "Answers:",
+              JSON.stringify(record.answers, null, 2),
+            ].join("\n"),
+          }),
+        });
 
-      if (!emailRes.ok) {
-        const errText = await emailRes.text();
-        await appendFile(
-          path.join(dataDir, "check-email-errors.log"),
-          `${new Date().toISOString()} ${errText}\n`,
+        if (!emailRes.ok) {
+          const errText = await emailRes.text();
+          await appendLogLine(
+            "check-email-errors.log",
+            `${new Date().toISOString()} ${errText}\n`,
+          );
+        }
+      } catch (err) {
+        await appendLogLine(
+          "check-email-errors.log",
+          `${new Date().toISOString()} ${String(err)}\n`,
         );
       }
     }
 
     return NextResponse.json({ ok: true, id: record.id });
-  } catch {
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+  } catch (err) {
+    return NextResponse.json(
+      { error: "Server error", detail: String(err) },
+      { status: 500 },
+    );
   }
 }
