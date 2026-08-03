@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { IntakeForm } from "@/components/sections/IntakeForm";
@@ -29,5 +30,9 @@ export default async function IntakePage({
   const locale = raw as Locale;
   const dict = getDictionary(locale);
 
-  return <IntakeForm locale={locale} dict={dict} />;
+  return (
+    <Suspense fallback={<div className="py-20 text-center text-ink-muted">…</div>}>
+      <IntakeForm locale={locale} dict={dict} />
+    </Suspense>
+  );
 }

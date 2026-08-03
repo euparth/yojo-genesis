@@ -9,7 +9,6 @@ import { Enso } from "@/components/ui/Enso";
 export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
     <section className="relative isolate overflow-hidden">
-      {/* soft nature gradients */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
@@ -27,18 +26,15 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         className="float-slower pointer-events-none absolute -left-32 bottom-0 -z-10 hidden h-80 w-80 rounded-full bg-trust/10 blur-3xl sm:block"
       />
 
-      {/* living tech x nature field — desktop only (iOS canvas can blank the layer) */}
       <div className="pointer-events-none absolute inset-0 -z-10 hidden md:block">
         <NatureCanvas />
       </div>
 
-      {/* giant ensō watermark */}
       <Enso
         className="pointer-events-none absolute -right-16 top-1/2 -z-10 hidden h-[480px] w-[480px] -translate-y-1/2 text-trust/15 lg:block"
         strokeWidth={3}
       />
 
-      {/* vertical Japanese accent — md+ only */}
       <p
         aria-hidden
         className="tategaki kanji-mark absolute right-6 top-24 -z-10 hidden text-sm text-trust/50 md:block lg:right-[430px]"
@@ -46,7 +42,6 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         自然に学び、技術で応える
       </p>
 
-      {/* Hero copy is NEVER behind opacity:0 — critical for mobile Safari */}
       <Container className="relative z-10 py-14 sm:py-20 md:py-28 lg:py-32">
         <div className="max-w-3xl min-w-0">
           <div className="flex flex-wrap items-center gap-3">
@@ -60,9 +55,9 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink-muted sm:mt-7 sm:text-base md:text-lg">
             {dict.hero.body}
           </p>
-          <div className="mt-8 flex w-full flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center">
+          <div className="mt-8 flex w-full flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center">
             <ButtonLink
-              href={localePath(locale, "/intake")}
+              href={localePath(locale, "/check")}
               className="w-full justify-center sm:w-auto"
             >
               {dict.hero.primaryCta} →
@@ -75,10 +70,17 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {dict.hero.secondaryCta}
             </ButtonLink>
           </div>
+          <p className="mt-4">
+            <a
+              href={localePath(locale, "/intake")}
+              className="link-sweep text-sm text-ink-muted hover:text-trust"
+            >
+              {dict.hero.tertiaryCta}
+            </a>
+          </p>
         </div>
       </Container>
 
-      {/* seigaiha wave transition */}
       <div aria-hidden className="seigaiha relative z-10 h-10 w-full opacity-70" />
     </section>
   );

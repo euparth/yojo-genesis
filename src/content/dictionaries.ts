@@ -2,28 +2,31 @@ import type { Locale } from "@/lib/types";
 
 const ja = {
   meta: {
-    title: "YOJO Genesis | ウェブサイト・アプリ・AIを、わかりやすく届ける",
+    title: "YOJO Genesis | 成長チャネル・現場ループ・創業CTO伴走",
     description:
-      "ITに詳しくなくても大丈夫。ウェブサイト、アプリ、UI/UX、AIまで。ふつうの言葉で相談でき、72時間でわかりやすい提案をお返しします。",
+      "無料のボトルネック診断から。成長チャネルの改善、現場の見る→わかる→動く、創業CTO伴走まで。売り込みの前に、詰まりをはっきりさせます。",
   },
   nav: {
     howItWorks: "進め方",
     whatWeBuild: "できること",
+    diagnostic: "無料診断",
     capabilities: "専門領域",
     cases: "実績",
     security: "セキュリティ",
     company: "会社概要",
     intake: "72時間で提案を受ける",
     intakeShort: "72h提案",
+    diagnosticShort: "診断",
     services: "サービス",
   },
   hero: {
     eyebrow: "YOJO GENESIS — つくる相手として",
-    headline: "ITの専門用語がわからなくても、",
-    headlineAccent: "事業の悩みはそのまま送れます。",
-    body: "ウェブサイト、アプリ、画面デザイン、AIの仕組みまで。工場向けの高度なAIも対応できます。難しい言葉はこちらで翻訳します。まずは「困っていること」をふつうの日本語で教えてください。",
-    primaryCta: "72時間でわかりやすい提案を受け取る",
+    headline: "詰まりを先に見える化する。",
+    headlineAccent: "売り込みは、そのあとでいい。",
+    body: "成長チャネル（サイト／アプリ）、現場のクローズドループ（見る→わかる→動く）、創業CTO伴走。当てはまる扉から、約2分の診断へ。",
+    primaryCta: "無料でボトルネック診断を受ける",
     secondaryCta: "できることを見る",
+    tertiaryCta: "すでに準備できている方は72時間提案へ",
   },
   trust: {
     items: [
@@ -47,22 +50,62 @@ const ja = {
   },
   whoFor: {
     eyebrow: "01 / こんな方へ",
-    title: "Reactを知らなくても大丈夫です",
-    body: "技術の知識がなくても、事業の言葉で相談できます。IT担当がいないお店・クリニック・会社の方も歓迎です。",
+    title: "三つの扉。どれも「つくる相手」です",
+    body: "小さく見える仕事も、現場の重い仕事も、創業の伴走も。一般的な「なんでも屋」ではなく、扉ごとに専門を分けています。",
     items: [
       {
-        title: "お店・クリニック・事業者の方",
-        body: "ホームページや予約・案内の仕組みがほしい。IT用語は苦手でも、やりたいことははっきりしている。",
+        title: "成長チャネルを伸ばしたい事業者",
+        body: "ホームページや予約・案内。IT用語は苦手でも、やりたいことははっきりしている。",
       },
       {
-        title: "社内のDX・業務改善担当",
-        body: "現場の手間を減らしたい。大きなシステム刷新の前に、小さく試してから進めたい。",
+        title: "現場の見る→わかる→動くを閉じたい方",
+        body: "検査・IIoT・オンプレAI。データを外に出さず、狭いセルから本番へ。",
       },
       {
-        title: "プロダクトを急いで形にしたい方",
-        body: "アイデアはある。画面と裏側の仕組みを、短期間で動く形にしたい。",
+        title: "売ることに集中したい創業者",
+        body: "技術パートナー／埋め込みCTOが欲しい。現金＋株式などの伴走も、選別のうえで。",
       },
     ],
+  },
+  diagnosticBand: {
+    eyebrow: "無料診断",
+    title: "YOJO ボトルネック診断",
+    body: "約2分。当てはまる扉を選び、ギャップと「最初に直す一手」を受け取ります。",
+    primaryCta: "診断をはじめる",
+    doors: [
+      {
+        title: "成長チャネル",
+        body: "問い合わせを止めているギャップ",
+        cta: "この扉へ",
+        href: "/check?path=a",
+      },
+      {
+        title: "現場ループ",
+        body: "見る→わかる→動くの準備度",
+        cta: "この扉へ",
+        href: "/check?path=b",
+      },
+      {
+        title: "創業CTO伴走",
+        body: "MVPは本番・投資に耐えるか",
+        cta: "この扉へ",
+        href: "/check?path=c",
+      },
+    ],
+  },
+  founderPartnership: {
+    eyebrow: "創業伴走（選別あり）",
+    title: "あなたが売り、私たちがつくる",
+    body: "埋め込みCTO＋実装チーム。市場と資金調達は創業者、プロダクトは私たち。合う案件のみ、現金＋株式などで条件を設計します。",
+    selectivity: "誰とでも組むわけではありません。適性確認のあと、少数だけ伴走します。",
+    proof: [
+      "創業経験（米国・カナダ・インド）と資金調達の経験",
+      "起業学修士（ドイツ）／スタートアップピッチの審査経験",
+      "一人ではなく、デリバリーチームで実装",
+      "無償の「CTOだけ」はお受けしません",
+    ],
+    primaryCta: "伴走の適性チェック",
+    secondaryCta: "話を申し込む",
   },
   howItWorks: {
     eyebrow: "02 / 進め方",
@@ -152,53 +195,53 @@ const ja = {
     ],
   },
   capabilities: {
-    eyebrow: "05 / 専門領域（企業・工場向け）",
-    title: "大きな現場向けの、もう一つの強み",
-    body: "ここは少し専門的です。下の「かんたんに言うと」だけ読んでも大丈夫です。",
+    eyebrow: "05 / 現場ループ（企業・工場）",
+    title: "見る → わかる → 動く。データを施設の外に出さない",
+    body: "技術名は「ループの層」です。なんでも屋のカタログではありません。下の一行だけ読んでも大丈夫です。",
     items: [
       {
         id: "vision",
         number: "01",
-        title: "ロボティクス & コンピュータビジョン",
-        plainSubtitle: "かんたんに言うと：カメラでキズや不良を見つけ、目視の負担を減らします。",
-        body: "外観検査、微細欠陥検出、施設安全モニタリング。製造ラインの目視依存を減らし、品質と省人化を同時に進めます。",
+        title: "見る — コンピュータビジョン & ロボティクス",
+        plainSubtitle: "かんたんに言うと：カメラと現場の動きで、目視の負担を減らします。",
+        body: "外観検査、微細欠陥、安全モニタ。必要ならロボティクスで「動く」側までつなぎます。",
         sectors: "重工業 / 自動車 / 物流",
       },
       {
         id: "edge",
         number: "02",
-        title: "Edge AI（ゼロ・クラウド・リスク）",
-        plainSubtitle: "かんたんに言うと：AIをあなたのパソコンや工場内で動かし、データは外に出しません。",
-        body: "LLM・ビジョンモデルを工場・拠点内で稼働。データ持ち出しなし、低遅延、知財保護を前提に設計します。",
+        title: "境界 — Edge / IIoT（データ主権）",
+        plainSubtitle: "かんたんに言うと：推論と信号は拠点内。持ち出し前提にしません。",
+        body: "PLC/SCADA信号とEdge推論を同じ閉域で。公開クラウド学習への転用は行いません。",
         sectors: "重要インフラ / 製造 / 防衛・航空関連",
       },
       {
         id: "nlp",
         number: "03",
-        title: "NLP & LLM統合",
-        plainSubtitle: "かんたんに言うと：書類や古いデータを読み取り、社内の知りたいことに答える仕組みです。",
-        body: "レガシー帳票・DBからの構造化抽出、多言語ナレッジ基盤、コンプライアンス報告の自動化。",
-        sectors: "金融 / 官公庁・公的案件 / 法務・管理部門",
+        title: "わかる — オンプレLLM & 狭いエージェント",
+        plainSubtitle: "かんたんに言うと：手順を引き、アラートを次の作業までつなぎます。",
+        body: "現場文書の検索・要約と、アラート→チェックリスト→起票のような狭いワークフロー。自律工場の宣伝はしません。",
+        sectors: "製造オペ / 保全 / 品質",
       },
       {
         id: "modernization",
         number: "04",
-        title: "高速ソフトウェア近代化",
-        plainSubtitle: "かんたんに言うと：古いシステムを、短期間で使いやすい新しい仕組みへ置き換えます。",
-        body: "DevPilotソフトウェア工場により、調査・実装・検証・デプロイを並列化。従来SIでは数ヶ月かかる検証を日単位で前進させます。",
+        title: "届ける — 速い実装（ソフトウェア工場）",
+        plainSubtitle: "かんたんに言うと：狭いセルを、短期間で本番に載せます。",
+        body: "DevPilot工場で調査・実装・検証を並列化。大きな刷新の前に、線上で効く一切れを先に。",
         sectors: "DX推進部門 / IT子会社 / 事業部門",
       },
     ],
     expandLabel: "もう少し詳しく",
     expandBodies: {
       vision:
-        "カメラ・既存PLC/SCADA連携を前提に、推論はEdgeノード上で実行。クラウド必須の学習パイプラインは分離し、推論データは現場に留めます。",
+        "カメラと既存ライン前提。推論はEdge。学習パイプラインは分離し、現場データは留めます。",
       edge:
-        "エアギャップまたは閉域網でのモデル配信、更新承認フロー、監査ログを標準装備。公開基盤モデルへの学習転用は行いません。",
+        "エアギャップまたは閉域でのモデル配信、更新承認、監査ログ。IIoT信号を判断ループへ。",
       nlp:
-        "OCR/文書パーサと社内LLMを組み合わせ、既存権限モデルに沿った検索・要約・レポート生成を実装します。",
+        "オンプレLLMで手順・帳票。エージェントは狭いフローに限定し、過大な自律を約束しません。",
       modernization:
-        "要件記述からスキーマ・API・UI・テストまでを工場化し、貴社レビューゲートで品質を担保します。",
+        "要件からスキーマ・API・UI・テストまで工場化。貴社レビューゲートで品質を担保します。",
     },
   },
   security: {
@@ -244,28 +287,29 @@ const ja = {
   },
   engagement: {
     eyebrow: "進め方の詳細",
-    title: "まず小さく試し、納得してから広げます",
-    body: "大きな契約の前に、「何をつくるか・いくらかかりそうか」をはっきりさせます。",
+    title: "診断 → 提案 → 小さく本番へ",
+    body: "冷たい訪問者には診断を。準備できた方には72時間提案を。",
     steps: [
       {
-        title: "72時間でわかりやすい提案",
-        body: "ふつうの言葉で課題を送ってください。72時間以内に、つくるもの・おおよその期間・費用の目安・次の一手を、わかりやすい言葉でお返しします。",
+        title: "ボトルネック診断（無料）",
+        body: "約2分。成長／現場／創業の扉から、ギャップと最初の一手を受け取ります。",
       },
       {
-        title: "小さな試作品（PoC）",
-        body: "本番の前に、狭い範囲で動く版をつくります。例：検査時間を短くする、予約画面を動かす、など成功の条件を先に決めます。",
+        title: "72時間のわかりやすい提案",
+        body: "つくるもの・期間・費用の目安・次の一手。現場向けはアーキテクチャ寄りでお返しします。",
       },
       {
-        title: "本番へ広げる",
-        body: "試作品がうまくいったら、サイト全体や部署・工場へ広げます。納品物はすべてあなたの資産です。",
+        title: "狭い試作品から本番へ",
+        body: "成功条件を先に決め、線やチャネルの狭い範囲で動かしてから広げます。",
       },
     ],
   },
   ctaBand: {
-    eyebrow: "無料ではない誠実な提案",
-    title: "困っていることを、そのまま送ってください",
-    body: "売り込みだけの場ではありません。72時間以内に、何をつくるか・次に何をするかを、わかりやすい言葉でお返しします。",
-    button: "72時間でわかりやすい提案を受け取る",
+    eyebrow: "まず診断、それから提案",
+    title: "詰まりが見えないまま、見積だけ求めません",
+    body: "無料のボトルネック診断でギャップを開くか、準備できていれば72時間提案へ。",
+    button: "無料でボトルネック診断を受ける",
+    secondaryButton: "72時間提案へ",
   },
   aboutPreview: {
     eyebrow: "私たちについて",
@@ -320,10 +364,16 @@ const ja = {
         label: "DXが進まない業務の詰まり",
       },
       {
+        id: "founder-cto",
+        label: "創業CTO伴走・技術パートナーを探している",
+      },
+      {
         id: "other",
         label: "その他",
       },
     ],
+    checkBridge:
+      "診断結果を踏まえて提案します。スコアやギャップは担当が参照します。",
     briefLabel: "課題の概要",
     briefPlaceholder:
       "最低20文字以上でご記入ください。例：お店の予約を電話だけからウェブでも受けたい。英語が苦手でも大丈夫な画面にしたい…",
@@ -366,28 +416,31 @@ const ja = {
 
 const en = {
   meta: {
-    title: "YOJO Genesis | Websites, apps, and AI — explained simply",
+    title: "YOJO Genesis | Growth channel, floor loop, embedded CTO",
     description:
-      "You don’t need an IT background. Websites, apps, UI/UX, and AI — tell us the problem in plain words. We reply in 72 hours with a clear plan.",
+      "Start with a free bottleneck diagnostic. Growth channel, on-site see→understand→act, or selective founder CTO partnership.",
   },
   nav: {
     howItWorks: "How it works",
     whatWeBuild: "What we build",
+    diagnostic: "Free diagnostic",
     capabilities: "Expertise",
     cases: "Work",
     security: "Security",
     company: "Company",
     intake: "Get a simple plan in 72 hours",
     intakeShort: "72h plan",
+    diagnosticShort: "Check",
     services: "Services",
   },
   hero: {
     eyebrow: "YOJO GENESIS — YOUR BUILD PARTNER",
-    headline: "You don’t need to speak tech.",
-    headlineAccent: "Just tell us what’s slowing you down.",
-    body: "Websites, apps, screen design, and AI helpers — plus advanced factory AI when you need it. We translate the jargon. Send the business problem in normal English.",
-    primaryCta: "Get a simple plan in 72 hours",
+    headline: "Name the bottleneck first.",
+    headlineAccent: "Pitching can wait.",
+    body: "Growth channel (sites/apps), floor closed-loop (see→understand→act), or embedded CTO for founders. Pick a door — about two minutes.",
+    primaryCta: "Take the free bottleneck diagnostic",
     secondaryCta: "See what we build",
+    tertiaryCta: "Already ready? Get a 72-hour plan",
   },
   trust: {
     items: [
@@ -411,22 +464,62 @@ const en = {
   },
   whoFor: {
     eyebrow: "01 / Who this is for",
-    title: "You don’t need to know React",
-    body: "Talk in business language. Perfect if you run a shop, clinic, or team without a full IT department.",
+    title: "Three doors. Same build partner.",
+    body: "Not a generalist catalog. Each door has a clear problem and deal type.",
     items: [
       {
-        title: "Business owners",
-        body: "You want a website, bookings, or a simple app. Tech words are scary — the goal is clear.",
+        title: "Operators growing a channel",
+        body: "Sites, bookings, clearer screens — business language welcome.",
       },
       {
-        title: "Ops / DX people inside a company",
-        body: "You want less manual work. Try a small win before a huge system rewrite.",
+        title: "Teams closing the floor loop",
+        body: "Vision, IIoT, on-prem models — data stays on your network.",
       },
       {
-        title: "Founders who need to ship",
-        body: "You have the idea. You need screens and systems that work — fast.",
+        title: "Founders who need to sell",
+        body: "Embedded CTO + build team. Cash + equity only when it fits — selective.",
       },
     ],
+  },
+  diagnosticBand: {
+    eyebrow: "Free diagnostic",
+    title: "YOJO Bottleneck Diagnostic",
+    body: "About two minutes. Unlock gaps and what to fix first.",
+    primaryCta: "Start the diagnostic",
+    doors: [
+      {
+        title: "Growth channel",
+        body: "Gaps blocking online inquiries",
+        cta: "This door",
+        href: "/check?path=a",
+      },
+      {
+        title: "Floor intelligence",
+        body: "See → understand → act readiness",
+        cta: "This door",
+        href: "/check?path=b",
+      },
+      {
+        title: "Embedded CTO",
+        body: "Is the MVP investable / production-ready?",
+        cta: "This door",
+        href: "/check?path=c",
+      },
+    ],
+  },
+  founderPartnership: {
+    eyebrow: "Founder partnership (selective)",
+    title: "You sell. We build.",
+    body: "Embedded CTO + engineering team. You own market and fundraising; we own product. Cash + equity terms only after diligence — few seats.",
+    selectivity: "We do not partner with everyone. Diligence first.",
+    proof: [
+      "Founded and raised across US / Canada / India",
+      "MS Entrepreneurship (Germany) / startup pitch reviewer",
+      "Delivered by a team — not a solo freelancer",
+      "We don’t take “free CTO only” embeds",
+    ],
+    primaryCta: "Check partnership fit",
+    secondaryCta: "Start a conversation",
   },
   howItWorks: {
     eyebrow: "02 / How it works",
@@ -516,57 +609,57 @@ const en = {
     ],
   },
   capabilities: {
-    eyebrow: "05 / Deeper expertise (enterprise & factories)",
-    title: "Another strength — for bigger floors",
-    body: "This section is more technical. Reading the “In plain words” line under each title is enough.",
+    eyebrow: "05 / Floor loop (enterprise & factories)",
+    title: "See → understand → act. Data stays on site.",
+    body: "Tech names are layers of one loop — not a generalist catalog. The plain line under each title is enough.",
     items: [
       {
         id: "vision",
         number: "01",
-        title: "Robotics & computer vision",
+        title: "See — computer vision & robotics",
         plainSubtitle:
-          "In plain words: cameras find defects so people don’t stare all day.",
-        body: "Defect detection, automated QA, and facility monitoring for lines that still depend on human eyes.",
+          "In plain words: cameras and motion reduce eye-only inspection.",
+        body: "Defects, fine defects, safety monitoring — and robotics when the loop needs actuation.",
         sectors: "Heavy manufacturing / Automotive / Logistics",
       },
       {
         id: "edge",
         number: "02",
-        title: "Edge AI (zero-cloud-risk)",
+        title: "Boundary — Edge / IIoT (data sovereignty)",
         plainSubtitle:
-          "In plain words: AI runs on your machines — data stays with you.",
-        body: "LLMs and vision models that run on factory hardware — IP protection, low latency, no data exfiltration by default.",
+          "In plain words: inference and signals stay inside your network.",
+        body: "PLC/SCADA signals with Edge inference in a closed network. No training public models on your ops data.",
         sectors: "Critical infrastructure / Manufacturing / Aerospace-adjacent",
       },
       {
         id: "nlp",
         number: "03",
-        title: "NLP & LLM integration",
+        title: "Understand — on-prem LLM & narrow agents",
         plainSubtitle:
-          "In plain words: software that reads old files and answers internal questions.",
-        body: "Legacy data extraction, multilingual internal knowledge bases, and automated compliance reporting.",
-        sectors: "Finance / Public-sector programs / Legal & ops",
+          "In plain words: retrieve procedures; close alerts into next steps.",
+        body: "On-site document answers plus narrow workflows (alert → checklist → ticket). We don’t sell “autonomous factory” hype.",
+        sectors: "Ops / Maintenance / Quality",
       },
       {
         id: "modernization",
         number: "04",
-        title: "Rapid software modernization",
+        title: "Deliver — fast implementation",
         plainSubtitle:
-          "In plain words: replace slow old systems with something usable — faster.",
-        body: "The DevPilot software factory parallelizes research, build, verify, and deploy — compressing SI timelines from months toward days.",
+          "In plain words: get a narrow cell to production quickly.",
+        body: "DevPilot factory parallelizes research, build, and verify — a working slice before a giant rewrite.",
         sectors: "DX offices / IT subsidiaries / Business units",
       },
     ],
     expandLabel: "A bit more detail",
     expandBodies: {
       vision:
-        "Cameras and existing PLC/SCADA integrations with inference on edge nodes. Training pipelines stay separated; inference data stays on site.",
+        "Cameras on existing lines; inference on Edge. Training separated; site data stays on site.",
       edge:
-        "Air-gapped or closed-network model delivery, update approval flows, and audit logs. Client data is never used to train public foundation models.",
+        "Air-gapped or closed delivery, update approval, audit logs. IIoT signals into the decision loop.",
       nlp:
-        "OCR/document parsers plus internal LLMs for search, summarization, and reporting aligned to your permission model.",
+        "On-prem LLM for procedures; agents limited to narrow flows — no overclaim of autonomy.",
       modernization:
-        "From a brief to schema, API, UI, and tests — factoryized delivery with your review gates.",
+        "Brief to schema, API, UI, tests — factoryized with your review gates.",
     },
   },
   security: {
@@ -612,28 +705,29 @@ const en = {
   },
   engagement: {
     eyebrow: "How engagements start",
-    title: "Start small. Understand. Then grow.",
-    body: "Before a big spend, we make “what / how long / roughly how much” obvious.",
+    title: "Diagnose → plan → narrow production",
+    body: "Cold visitors get the diagnostic. Ready buyers get the 72-hour plan.",
     steps: [
       {
+        title: "Bottleneck diagnostic (free)",
+        body: "About two minutes. Growth, floor, or founder door — gaps plus what to fix first.",
+      },
+      {
         title: "Simple plan in 72 hours",
-        body: "Send the problem in normal words. Within 72 hours you get: what we’d build, rough timeline, rough cost band, and the next step — in plain language.",
+        body: "What to build, rough timing, cost band, next step. Floor work comes as an architecture-leaning plan.",
       },
       {
-        title: "Small working trial",
-        body: "A limited build before the full rollout. We agree what “success” looks like first (e.g. faster bookings, fewer manual checks).",
-      },
-      {
-        title: "Scale when it works",
-        body: "Happy with the trial? Expand to the full site, team, or floor. Everything we deliver is yours.",
+        title: "Narrow trial into production",
+        body: "Agree success criteria, ship a thin slice on the channel or line, then expand.",
       },
     ],
   },
   ctaBand: {
-    eyebrow: "Honest reply — not a pitch deck",
-    title: "Tell us what’s slowing you down",
-    body: "No jargon homework. Within 72 hours you’ll get a clear plan: what to build and what to do next.",
-    button: "Get a simple plan in 72 hours",
+    eyebrow: "Diagnose first, then plan",
+    title: "We won’t ask for a quote before the bottleneck is clear",
+    body: "Take the free diagnostic — or jump to a 72-hour plan if you’re ready.",
+    button: "Take the free bottleneck diagnostic",
+    secondaryButton: "72-hour plan",
   },
   aboutPreview: {
     eyebrow: "About",
@@ -688,10 +782,16 @@ const en = {
         label: "Stuck process / DX bottleneck",
       },
       {
+        id: "founder-cto",
+        label: "Looking for embedded CTO / tech co-build",
+      },
+      {
         id: "other",
         label: "Other",
       },
     ],
+    checkBridge:
+      "We’ll use your diagnostic score and gaps when we reply.",
     briefLabel: "Problem brief",
     briefPlaceholder:
       "Minimum 20 characters. Example: We only take bookings by phone and want a simple web form. Screens should be easy even if English isn’t our first language…",

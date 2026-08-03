@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import type { Dictionary } from "@/content/dictionaries";
 import type { Locale, SituationId } from "@/lib/types";
 import { localePath } from "@/lib/i18n";
@@ -16,9 +17,30 @@ export function IntakeForm({
   locale: Locale;
   dict: Dictionary;
 }) {
+  const searchParams = useSearchParams();
+  const fromCheck = searchParams.get("from") === "check";
+  const checkPath = searchParams.get("path");
+  const checkScore = searchParams.get("score");
+  const checkBand = searchParams.get("band");
+
   const [step, setStep] = useState<Step>(0);
-  const [situations, setSituations] = useState<SituationId[]>([]);
-  const [brief, setBrief] = useState("");
+  const [situations, setSituations] = useState<SituationId[]>(() => {
+    if (checkPath === "c") return ["founder-cto"];
+    if (checkPath === "b") return ["visual-inspection"];
+    if (checkPath === "a") return ["website-app"];
+    return [];
+  });
+  const [brief, setBrief] = useState(() => {
+    if (!fromCheck) return "";
+    const bits = [
+      checkPath ? `Diagnostic path: ${checkPath}` : null,
+      checkScore ? `Score: ${checkScore}` : null,
+      checkBand ? `Band: ${checkBand}` : null,
+    ].filter(Boolean);
+    return bits.length
+      ? `${bits.join(" · ")}\n\n`
+      : "";
+  });
   const [fileName, setFileName] = useState<string | null>(null);
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
@@ -131,6 +153,11 @@ export function IntakeForm({
           <p className="mt-4 text-[15px] leading-relaxed text-ink-muted sm:text-base">
             {dict.intake.body}
           </p>
+          {fromCheck && (
+            <p className="mt-3 text-sm font-medium text-trust">
+              {dict.intake.checkBridge}
+            </p>
+          )}
           <p className="mt-4 rounded-2xl border border-trust/20 bg-accent-soft/50 px-4 py-3 text-sm leading-relaxed text-ink">
             {dict.intake.plainPromise}
           </p>

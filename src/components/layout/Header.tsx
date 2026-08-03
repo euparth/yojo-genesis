@@ -24,10 +24,10 @@ export function Header({
   const onIntake = rest === "/intake" || rest.startsWith("/intake/");
 
   const links = [
+    { href: localePath(locale, "/check"), label: dict.nav.diagnostic },
     { href: localePath(locale, "/#how-it-works"), label: dict.nav.howItWorks },
     { href: localePath(locale, "/#what-we-build"), label: dict.nav.whatWeBuild },
     { href: localePath(locale, "/#capabilities"), label: dict.nav.capabilities },
-    { href: localePath(locale, "/#cases"), label: dict.nav.cases },
     { href: localePath(locale, "/company"), label: dict.nav.company },
   ];
 
@@ -107,11 +107,11 @@ export function Header({
           </Link>
           {!onIntake && (
             <ButtonLink
-              href={localePath(locale, "/intake")}
+              href={localePath(locale, "/check")}
               className="!px-3.5 !py-2 text-xs sm:!px-5 sm:!py-2.5 sm:text-sm"
             >
-              <span className="sm:hidden">{dict.nav.intakeShort}</span>
-              <span className="hidden sm:inline">{dict.nav.intake}</span>
+              <span className="sm:hidden">{dict.nav.diagnosticShort}</span>
+              <span className="hidden sm:inline">{dict.nav.diagnostic}</span>
             </ButtonLink>
           )}
           <button
@@ -164,11 +164,11 @@ export function Header({
             ))}
             <div className="pt-2">
               <ButtonLink
-                href={localePath(locale, "/intake")}
+                href={localePath(locale, "/check")}
                 className="w-full"
                 onClick={() => setOpen(false)}
               >
-                {dict.nav.intake}
+                {dict.nav.diagnostic}
               </ButtonLink>
             </div>
           </nav>

@@ -14,6 +14,7 @@ export type SituationId =
   | "legacy-data"
   | "onprem-llm"
   | "dx-bottleneck"
+  | "founder-cto"
   | "other";
 
 export type PortfolioStatus = "live" | "beta" | "in-dev";
