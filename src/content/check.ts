@@ -54,25 +54,25 @@ type CheckLocale = {
 };
 
 const ja: CheckLocale = {
-  metaTitle: "YOJO ボトルネック診断",
+  metaTitle: "かんたん診断 | YOJO Genesis",
   metaDescription:
-    "成長チャネル・現場ループ・創業CTO伴走。約2分でギャップを可視化します。",
-  umbrella: "YOJO ボトルネック診断",
+    "約2分。サイト・アプリ、現場の仕事、創業の技術パートナー。ふつうの言葉で整理します。",
+  umbrella: "かんたん診断",
   intro:
-    "売り込みの前に、いまの詰まりをはっきりさせます。当てはまる扉を選んでください。",
-  chooseLabel: "どの詰まりに近いですか？",
+    "専門用語は不要です。いちばん近いものを選んでください。",
+  chooseLabel: "いちばん近いのはどれですか？",
   paths: {
     a: {
-      title: "成長チャネル",
-      body: "問い合わせ・予約・サイト／アプリが弱い",
+      title: "サイト・アプリ・問い合わせ",
+      body: "お客さまが来てくれない、予約が電話だけ、画面が使いにくい",
     },
     b: {
-      title: "現場ループ",
-      body: "見る→わかる→動く（CV / IIoT / オンプレAI）",
+      title: "工場・現場の仕事",
+      body: "目視の検査、手作業、データは社内に残したい",
     },
     c: {
-      title: "創業CTO伴走",
-      body: "売るのは自分、技術パートナーが欲しい",
+      title: "創業・プロダクトづくり",
+      body: "売るのは自分。つくる相手が欲しい",
     },
   },
   next: "次へ",
@@ -362,24 +362,24 @@ const ja: CheckLocale = {
 };
 
 const en: CheckLocale = {
-  metaTitle: "YOJO Bottleneck Diagnostic",
+  metaTitle: "2-minute check | YOJO Genesis",
   metaDescription:
-    "Growth channel, floor intelligence, or founder CTO partnership — map your gaps in about two minutes.",
-  umbrella: "YOJO Bottleneck Diagnostic",
-  intro: "Before a pitch, name the bottleneck. Pick the door that fits.",
-  chooseLabel: "Which bottleneck is closest?",
+    "Website, workplace AI, or a tech partner for founders — map what’s stuck in about two minutes. No jargon required.",
+  umbrella: "A 2-minute check",
+  intro: "No tech vocabulary needed. Pick the closest situation.",
+  chooseLabel: "Which is closest to your situation?",
   paths: {
     a: {
-      title: "Growth channel",
-      body: "Inquiries, bookings, site / app friction",
+      title: "Website, app, or inquiries",
+      body: "Customers don’t get in touch. Bookings are phone-only. Screens are hard.",
     },
     b: {
-      title: "Floor intelligence",
-      body: "See → understand → act (CV / IIoT / on-prem AI)",
+      title: "Factory or daily operations",
+      body: "Too much manual checking. Data should stay inside the building.",
     },
     c: {
-      title: "Embedded CTO",
-      body: "You sell; you need a technical co-build partner",
+      title: "Building a product as a founder",
+      body: "You sell. You need someone to build.",
     },
   },
   next: "Continue",

@@ -2,14 +2,14 @@ import type { Locale } from "@/lib/types";
 
 const ja = {
   meta: {
-    title: "YOJO Genesis | 成長チャネル・現場ループ・創業CTO伴走",
+    title: "YOJO Genesis | ウェブサイト・アプリ・AIをつくる相手",
     description:
-      "無料のボトルネック診断から。成長チャネルの改善、現場の見る→わかる→動く、創業CTO伴走まで。売り込みの前に、詰まりをはっきりさせます。",
+      "Reactや専門用語は不要です。ウェブサイト、アプリ、現場向けAIまで。ふつうの言葉で相談でき、72時間でわかりやすい提案をお返しします。",
   },
   nav: {
     howItWorks: "進め方",
     whatWeBuild: "できること",
-    diagnostic: "無料診断",
+    diagnostic: "かんたん診断",
     capabilities: "専門領域",
     cases: "実績",
     security: "セキュリティ",
@@ -20,13 +20,19 @@ const ja = {
     services: "サービス",
   },
   hero: {
-    eyebrow: "YOJO GENESIS — つくる相手として",
-    headline: "詰まりを先に見える化する。",
-    headlineAccent: "売り込みは、そのあとでいい。",
-    body: "成長チャネル（サイト／アプリ）、現場のクローズドループ（見る→わかる→動く）、創業CTO伴走。当てはまる扉から、約2分の診断へ。",
-    primaryCta: "無料でボトルネック診断を受ける",
+    eyebrow: "YOJO GENESIS — つくる相手",
+    headline: "Reactを知らなくても大丈夫。",
+    headlineAccent: "事業の悩みを、そのまま話してください。",
+    body: "YOJOは、ウェブサイト・アプリ・AIを「あなたのもの」としてつくるチームです。専門用語はこちらで翻訳します。まずは2分の質問で、何が止まっているかを一緒に整理します。",
+    promise: "技術の知識は不要です。やりたいことだけ教えてください。",
+    pills: [
+      { title: "サイト・アプリ", body: "お店や会社の顔、予約、管理画面" },
+      { title: "現場のAI", body: "検査や作業を楽に。データは社内に残す" },
+      { title: "創業の技術パートナー", body: "あなたが売り、私たちがつくる" },
+    ],
+    primaryCta: "2分で、何が止まっているか知る",
     secondaryCta: "できることを見る",
-    tertiaryCta: "すでに準備できている方は72時間提案へ",
+    tertiaryCta: "すでに話せる方は、72時間提案へ",
   },
   trust: {
     items: [
@@ -50,45 +56,45 @@ const ja = {
   },
   whoFor: {
     eyebrow: "01 / こんな方へ",
-    title: "三つの扉。どれも「つくる相手」です",
-    body: "小さく見える仕事も、現場の重い仕事も、創業の伴走も。一般的な「なんでも屋」ではなく、扉ごとに専門を分けています。",
+    title: "技術の話ができなくても、相談できます",
+    body: "IT担当がいなくても大丈夫。やりたいことをふつうの言葉で送ってください。",
     items: [
       {
-        title: "成長チャネルを伸ばしたい事業者",
-        body: "ホームページや予約・案内。IT用語は苦手でも、やりたいことははっきりしている。",
+        title: "お店・クリニック・会社の方",
+        body: "ホームページや予約・案内がほしい。IT用語は苦手でも、やりたいことははっきりしている。",
       },
       {
-        title: "現場の見る→わかる→動くを閉じたい方",
-        body: "検査・IIoT・オンプレAI。データを外に出さず、狭いセルから本番へ。",
+        title: "工場・現場の担当の方",
+        body: "目視の検査や手作業を減らしたい。大切なデータは社外に出したくない。",
       },
       {
         title: "売ることに集中したい創業者",
-        body: "技術パートナー／埋め込みCTOが欲しい。現金＋株式などの伴走も、選別のうえで。",
+        body: "アイデアはある。技術の相手が欲しい。合う場合だけ、一緒に組む話もできます。",
       },
     ],
   },
   diagnosticBand: {
-    eyebrow: "無料診断",
-    title: "YOJO ボトルネック診断",
-    body: "約2分。当てはまる扉を選び、ギャップと「最初に直す一手」を受け取ります。",
+    eyebrow: "かんたん診断（約2分）",
+    title: "いま、何が止まっていますか？",
+    body: "難しい質問はありません。近いものを選ぶと、「何が足りないか」と「最初に直す一手」がわかります。",
     primaryCta: "診断をはじめる",
     doors: [
       {
-        title: "成長チャネル",
-        body: "問い合わせを止めているギャップ",
-        cta: "この扉へ",
+        title: "サイト・アプリ・問い合わせ",
+        body: "お客さまが来てくれない、予約が電話だけ、画面が使いにくい",
+        cta: "こちらから始める",
         href: "/check?path=a",
       },
       {
-        title: "現場ループ",
-        body: "見る→わかる→動くの準備度",
-        cta: "この扉へ",
+        title: "工場・現場の仕事",
+        body: "目視の検査、手作業、データを外に出したくない",
+        cta: "こちらから始める",
         href: "/check?path=b",
       },
       {
-        title: "創業CTO伴走",
-        body: "MVPは本番・投資に耐えるか",
-        cta: "この扉へ",
+        title: "創業・プロダクトづくり",
+        body: "売るのは自分、つくる相手が欲しい",
+        cta: "こちらから始める",
         href: "/check?path=c",
       },
     ],
@@ -288,11 +294,11 @@ const ja = {
   engagement: {
     eyebrow: "進め方の詳細",
     title: "診断 → 提案 → 小さく本番へ",
-    body: "冷たい訪問者には診断を。準備できた方には72時間提案を。",
+    body: "まず2分で整理。準備できた方には72時間の提案を。",
     steps: [
       {
-        title: "ボトルネック診断（無料）",
-        body: "約2分。成長／現場／創業の扉から、ギャップと最初の一手を受け取ります。",
+        title: "かんたん診断（無料・約2分）",
+        body: "サイト／現場／創業から近いものを選び、「何が足りないか」と「最初の一手」を受け取ります。",
       },
       {
         title: "72時間のわかりやすい提案",
@@ -305,10 +311,10 @@ const ja = {
     ],
   },
   ctaBand: {
-    eyebrow: "まず診断、それから提案",
-    title: "詰まりが見えないまま、見積だけ求めません",
-    body: "無料のボトルネック診断でギャップを開くか、準備できていれば72時間提案へ。",
-    button: "無料でボトルネック診断を受ける",
+    eyebrow: "まず整理、それから提案",
+    title: "やりたいことを、ふつうの言葉で送ってください",
+    body: "2分の質問で「何が止まっているか」がわかります。準備できていれば、72時間でわかりやすい提案へ。",
+    button: "2分で、何が止まっているか知る",
     secondaryButton: "72時間提案へ",
   },
   aboutPreview: {
@@ -403,7 +409,7 @@ const ja = {
     homeLink: "ホームに戻る",
   },
   footer: {
-    tagline: "ウェブサイトから現場AIまで。わかりやすい言葉で、固定成果で。",
+    tagline: "ウェブサイトから現場のAIまで。ふつうの言葉で、固定の成果で。",
     company: "会社概要",
     intake: "72時間提案",
     security: "セキュリティ",
@@ -416,14 +422,14 @@ const ja = {
 
 const en = {
   meta: {
-    title: "YOJO Genesis | Growth channel, floor loop, embedded CTO",
+    title: "YOJO Genesis | We build websites, apps, and AI — you don’t need to speak tech",
     description:
-      "Start with a free bottleneck diagnostic. Growth channel, on-site see→understand→act, or selective founder CTO partnership.",
+      "You don’t need to know React or backend. Tell us the business problem in plain words. We build websites, apps, and on-site AI — and reply in 72 hours with a clear plan.",
   },
   nav: {
     howItWorks: "How it works",
     whatWeBuild: "What we build",
-    diagnostic: "Free diagnostic",
+    diagnostic: "2-min check",
     capabilities: "Expertise",
     cases: "Work",
     security: "Security",
@@ -435,10 +441,16 @@ const en = {
   },
   hero: {
     eyebrow: "YOJO GENESIS — YOUR BUILD PARTNER",
-    headline: "Name the bottleneck first.",
-    headlineAccent: "Pitching can wait.",
-    body: "Growth channel (sites/apps), floor closed-loop (see→understand→act), or embedded CTO for founders. Pick a door — about two minutes.",
-    primaryCta: "Take the free bottleneck diagnostic",
+    headline: "You don’t need to know React.",
+    headlineAccent: "Just tell us what’s slowing the business down.",
+    body: "YOJO builds websites, apps, and AI that you own. We translate the tech. Start with two minutes of simple questions — then we tell you what to fix first.",
+    promise: "No tech vocabulary required. Speak in business language.",
+    pills: [
+      { title: "Sites & apps", body: "Your shop or company online — bookings, screens, tools" },
+      { title: "AI for the workplace", body: "Less manual work. Your data can stay inside your building" },
+      { title: "A tech partner for founders", body: "You sell. We build." },
+    ],
+    primaryCta: "See what’s stuck — 2 minutes",
     secondaryCta: "See what we build",
     tertiaryCta: "Already ready? Get a 72-hour plan",
   },
@@ -464,45 +476,45 @@ const en = {
   },
   whoFor: {
     eyebrow: "01 / Who this is for",
-    title: "Three doors. Same build partner.",
-    body: "Not a generalist catalog. Each door has a clear problem and deal type.",
+    title: "You don’t need to talk tech",
+    body: "No IT team required. Send the business problem in everyday words.",
     items: [
       {
-        title: "Operators growing a channel",
-        body: "Sites, bookings, clearer screens — business language welcome.",
+        title: "Shop, clinic, or company owners",
+        body: "You want a website, bookings, or clearer screens. The goal is clear — the jargon is not.",
       },
       {
-        title: "Teams closing the floor loop",
-        body: "Vision, IIoT, on-prem models — data stays on your network.",
+        title: "People running a factory or operations",
+        body: "Too much manual checking. You don’t want important data leaving the building.",
       },
       {
         title: "Founders who need to sell",
-        body: "Embedded CTO + build team. Cash + equity only when it fits — selective.",
+        body: "You have the idea. You need a technical partner so you can stay on customers.",
       },
     ],
   },
   diagnosticBand: {
-    eyebrow: "Free diagnostic",
-    title: "YOJO Bottleneck Diagnostic",
-    body: "About two minutes. Unlock gaps and what to fix first.",
-    primaryCta: "Start the diagnostic",
+    eyebrow: "A 2-minute check",
+    title: "What’s slowing you down?",
+    body: "No trick questions. Pick the closest situation. We’ll show what’s missing and what to fix first.",
+    primaryCta: "Start the 2-minute check",
     doors: [
       {
-        title: "Growth channel",
-        body: "Gaps blocking online inquiries",
-        cta: "This door",
+        title: "Website, app, or inquiries",
+        body: "Customers don’t get in touch. Bookings are phone-only. Screens are hard to use.",
+        cta: "Start here",
         href: "/check?path=a",
       },
       {
-        title: "Floor intelligence",
-        body: "See → understand → act readiness",
-        cta: "This door",
+        title: "Factory or daily operations",
+        body: "Too much eyeballing. Too much hand work. Data should stay on site.",
+        cta: "Start here",
         href: "/check?path=b",
       },
       {
-        title: "Embedded CTO",
-        body: "Is the MVP investable / production-ready?",
-        cta: "This door",
+        title: "Building a product as a founder",
+        body: "You sell. You need someone to build.",
+        cta: "Start here",
         href: "/check?path=c",
       },
     ],
@@ -705,12 +717,12 @@ const en = {
   },
   engagement: {
     eyebrow: "How engagements start",
-    title: "Diagnose → plan → narrow production",
-    body: "Cold visitors get the diagnostic. Ready buyers get the 72-hour plan.",
+    title: "Check → plan → a small working version",
+    body: "Start with two minutes. Ready buyers get a 72-hour plan.",
     steps: [
       {
-        title: "Bottleneck diagnostic (free)",
-        body: "About two minutes. Growth, floor, or founder door — gaps plus what to fix first.",
+        title: "2-minute check (free)",
+        body: "Website, workplace, or founder — we show what’s missing and what to fix first.",
       },
       {
         title: "Simple plan in 72 hours",
@@ -723,10 +735,10 @@ const en = {
     ],
   },
   ctaBand: {
-    eyebrow: "Diagnose first, then plan",
-    title: "We won’t ask for a quote before the bottleneck is clear",
-    body: "Take the free diagnostic — or jump to a 72-hour plan if you’re ready.",
-    button: "Take the free bottleneck diagnostic",
+    eyebrow: "Start simple, then a plan",
+    title: "Tell us what’s slowing you down — in normal words",
+    body: "Two minutes of questions, then we show what’s stuck. If you’re ready, we send a clear 72-hour plan.",
+    button: "See what’s stuck — 2 minutes",
     secondaryButton: "72-hour plan",
   },
   aboutPreview: {
@@ -822,7 +834,7 @@ const en = {
     homeLink: "Back to home",
   },
   footer: {
-    tagline: "From websites to floor AI — clear words, fixed outcomes",
+    tagline: "From websites to workplace AI — plain words, fixed outcomes",
     company: "Company",
     intake: "72h plan",
     security: "Security",

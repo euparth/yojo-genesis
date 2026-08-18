@@ -55,6 +55,22 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink-muted sm:mt-7 sm:text-base md:text-lg">
             {dict.hero.body}
           </p>
+          <p className="mt-3 max-w-2xl text-sm font-medium text-trust sm:text-[15px]">
+            {dict.hero.promise}
+          </p>
+          <ul className="mt-8 grid gap-3 sm:grid-cols-3">
+            {dict.hero.pills.map((pill) => (
+              <li
+                key={pill.title}
+                className="rounded-2xl border border-line bg-bg/80 px-4 py-3.5 backdrop-blur-sm"
+              >
+                <p className="text-sm font-semibold text-ink">{pill.title}</p>
+                <p className="mt-1 text-xs leading-relaxed text-ink-muted">
+                  {pill.body}
+                </p>
+              </li>
+            ))}
+          </ul>
           <div className="mt-8 flex w-full flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center">
             <ButtonLink
               href={localePath(locale, "/check")}
